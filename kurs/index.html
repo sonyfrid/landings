@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Чёрный кот · курс иллюстрации (демо)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Caveat:wght@600&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--fxbar:#111;--fxpillw:820px;--fxglass:rgba(244,242,236,.78);--paper:#f4f2ec;--ink:#111;--yel:#ffd400;--line:#cfccc2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:Manrope,sans-serif;font-size:19px;line-height:1.5;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#0000000d 1px,transparent 1px);background-size:4px 4px}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:rgba(244,242,236,.85);backdrop-filter:blur(10px)}
+.logo{font-family:Oswald;font-weight:700;font-size:32px;letter-spacing:.02em}
+.logo{display:flex;align-items:center;gap:10px}.lcat{width:44px;height:48px;animation:float 4s ease-in-out infinite}
+.logo b{display:inline-block;width:18px;height:18px;background:var(--ink);border-radius:50% 50% 40% 40%;vertical-align:-2px;margin-right:6px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border:1.5px solid var(--ink);border-radius:99px;padding:9px 18px;font-size:17px;font-weight:600;text-decoration:none;transition:.2s}
+.pill:hover{background:var(--ink);color:var(--paper)}
+.pill.dark{background:var(--ink);color:var(--paper)}
+.hero{position:relative;text-align:center;padding:40px 0 80px}
+.corner{position:absolute;width:40px;height:40px;border:2px solid var(--ink)}
+.c1{top:20px;left:12%;border-right:0;border-bottom:0}.c2{top:20px;right:12%;border-left:0;border-bottom:0}
+.flower{position:absolute;left:50%;top:10px;width:330px;transform:translateX(-58%);animation:spin 22s linear infinite;z-index:0}
+@keyframes spin{to{transform:translateX(-58%) rotate(360deg)}}
+.cat{position:relative;z-index:1;width:190px;margin:0 auto;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(-2deg)}}
+.cat .eye{transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.tiny{font-family:Oswald;letter-spacing:.2em;font-size:16px;margin-top:20px;position:relative;z-index:1}.hero>*{position:relative;z-index:1}.mascot{position:relative;height:300px;margin-top:40px}.mascot2{margin:70px auto 0;width:340px;text-align:center}.mascot2 .flower{left:50%}.mascot .flower{top:0}.mascot .cat{position:relative;top:40px}
+h1{font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:clamp(42px,8vw,104px);line-height:.95;letter-spacing:-.01em;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:8px 0;margin:10px auto 0;max-width:900px}
+.hand{font-family:Caveat;font-size:30px;margin-top:18px}
+.sub{font-family:Oswald;font-size:clamp(26px,4vw,44px);text-transform:none}
+.stickers{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:26px auto 0}
+.st{font-family:Oswald;font-size:19px;border:2px solid var(--ink);border-radius:99px;padding:6px 18px;background:#fff;transition:transform .25s}
+.st:nth-child(odd){transform:rotate(-4deg)}.st:nth-child(even){transform:rotate(3deg)}
+.st:hover{transform:rotate(0) scale(1.08);background:var(--yel)}
+.cta{display:inline-flex;gap:10px;align-items:center;margin-top:34px;background:var(--ink);color:var(--paper);font-family:Oswald;font-size:22px;padding:16px 30px;border-radius:99px;text-decoration:none;transition:.2s}
+.cta:hover{background:var(--yel);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.marq{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--yel);overflow:hidden;white-space:nowrap;font-family:Oswald;font-size:26px;padding:10px 0}
+.marq span{display:inline-block;animation:mq 18s linear infinite;padding-left:100%}
+@keyframes mq{to{transform:translateX(-100%)}}
+section{padding:80px 0}
+h2{font-family:Oswald;text-transform:uppercase;font-size:clamp(34px,5vw,60px);line-height:1;margin-bottom:12px}
+h2 small{display:block;font-family:Caveat;text-transform:none;font-size:28px;font-weight:600;margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.card{border:2px solid var(--ink);border-radius:22px;padding:26px;background:#fff;position:relative;transition:.25s}
+.card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:6px 6px 0 var(--ink)}
+.num{font-family:Oswald;font-size:54px;line-height:1;margin-bottom:10px}
+.card h3{font-family:Oswald;font-size:24px;margin-bottom:6px}
+.prog{margin-top:30px;border-top:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center;padding:20px 4px;border-bottom:2px solid var(--ink);transition:.2s}
+.row:hover{background:var(--yel);padding-left:16px}
+.row b{font-family:Oswald;font-size:24px}
+.row .w{font-family:Oswald;font-size:30px}
+.row span{color:#555;font-size:15px}
+.author{display:grid;grid-template-columns:320px 1fr;gap:40px;align-items:center}
+.ava{aspect-ratio:1;border:2px solid var(--ink);border-radius:50%;background:var(--yel);display:grid;place-items:center;position:relative}
+.ava svg{width:62%}
+.ava .badge{position:absolute;right:-6px;bottom:30px;background:#fff;border:2px solid var(--ink);border-radius:99px;font-family:Caveat;font-size:24px;padding:4px 16px;transform:rotate(-8deg)}
+.facts{display:flex;gap:30px;margin-top:22px;flex-wrap:wrap}
+.facts b{font-family:Oswald;font-size:44px;display:block;line-height:1}
+.price{text-align:left;display:flex;flex-direction:column}.price ul{flex:1}
+.price .p{font-family:Oswald;font-size:46px;margin:12px 0}
+.price ul{list-style:none;margin:10px 0 22px}
+.price li{padding:6px 0;border-bottom:1px dashed var(--line)}
+.price li:before{content:"✳ ";}
+.price.hot{background:var(--ink);color:var(--paper)}
+.price.hot li{border-color:#444}
+.price .tag{position:absolute;top:-14px;right:20px;background:var(--yel);color:var(--ink);border:2px solid var(--ink);border-radius:99px;font-family:Oswald;padding:2px 12px}
+.btn{display:block;text-align:center;border:2px solid currentColor;border-radius:99px;padding:12px;font-family:Oswald;font-size:20px;text-decoration:none;transition:.2s}
+.btn:hover{background:var(--yel);color:var(--ink);border-color:var(--ink)}
+.rev{font-family:Caveat;font-size:27px;line-height:1.25}
+.rev i{display:block;font-family:Manrope;font-style:normal;font-size:14px;margin-top:12px;color:#666}
+details{border-bottom:2px solid var(--ink);padding:18px 0}
+summary{cursor:pointer;font-family:Oswald;font-size:24px;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:"+";transition:.2s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin-top:10px;max-width:760px;color:#333}
+.form{background:var(--ink);color:var(--paper);border-radius:30px;padding:46px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.form h2{color:var(--paper)}
+.form input{width:100%;background:transparent;border:0;border-bottom:2px solid #666;color:var(--paper);font:inherit;font-size:19px;padding:12px 0;margin-bottom:16px;outline:none}
+.form input:focus{border-color:var(--yel)}
+.form button{background:var(--yel);color:var(--ink);border:0;border-radius:99px;font-family:Oswald;font-size:22px;padding:14px 30px;cursor:pointer;transition:.2s}
+.form button:hover{transform:scale(1.04)}
+.ok{display:none;font-family:Caveat;font-size:34px;color:var(--yel)}
+.works{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}.works div{aspect-ratio:4/3;border:2px solid var(--ink);border-radius:22px;background-size:cover;background-position:center;position:relative;transition:.3s}.works div:hover{transform:rotate(-1deg) scale(1.02);box-shadow:6px 6px 0 var(--ink)}.works span{position:absolute;left:14px;bottom:14px;background:var(--yel);border:2px solid var(--ink);border-radius:99px;padding:4px 14px;font-family:Oswald}@media(max-width:860px){.works{grid-template-columns:1fr}}
+footer{padding:40px 0;text-align:center;font-size:14px;color:#555}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}.author,.form{grid-template-columns:1fr}.row{grid-template-columns:60px 1fr}.row .w{display:none}.flower{width:240px}.c1,.c2{display:none}.form{padding:28px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav data-fxnav>
+ <div class="logo"><svg class="lcat" viewBox="0 0 200 220"><path d="M50 70 40 10l45 35h30l45-35-10 60c18 18 25 40 25 62 0 50-40 82-75 82S25 182 25 132c0-22 7-44 25-62z" fill="#111"/><ellipse cx="75" cy="110" rx="17" ry="20" fill="#ffd400"/><ellipse cx="125" cy="110" rx="17" ry="20" fill="#ffd400"/><circle cx="78" cy="113" r="8" fill="#111"/><circle cx="128" cy="113" r="8" fill="#111"/></svg>ЧЁРНЫЙ КОТ</div>
+ <div class="pills"><a class="pill" href="#prog">программа</a><a class="pill" href="#author">автор</a><a class="pill" href="#price">тарифы</a><a class="pill dark" href="#form">↘ записаться</a></div>
+</nav>
+
+<header class="hero" data-orbs="#ffd400,#111111,#ffd400,#d8d4c8" data-shapes="circle,square,triangle,ring" data-orbs-n="10">
+ <div class="corner c1"></div><div class="corner c2"></div>
+ <div class="tiny">ОНЛАЙН-КУРС · 8 НЕДЕЛЬ · С НУЛЯ</div>
+ <h1>Иллюстрация, которую покупают</h1>
+ <div class="hand">(что ты научишься делать)</div>
+ <div class="sub">от первого скетча до заказов</div>
+ <div class="stickers"><span class="st">✳ персонажи</span><span class="st">✳ Procreate</span><span class="st">✳ цвет и свет</span><span class="st">✳ стикеры</span><span class="st">✳ анимация</span><span class="st">✳ портфолио</span><span class="st">✳ первые клиенты</span></div>
+ <a class="cta" href="#form">Хочу на курс ↘</a>
+
+</header>
+</div>
+
+<div class="marq"><span>✳ старт потока 15 ноября ✳ осталось 12 мест ✳ обратная связь от автора на каждое задание ✳ доступ к урокам навсегда ✳ старт потока 15 ноября ✳ осталось 12 мест ✳</span></div>
+
+<div class="wrap">
+<section>
+ <h2 class="rv"><small>почему этот курс</small>Не теория, а работа</h2>
+ <div class="grid3">
+  <div class="card rv"><div class="num">01</div><h3>Практика с первого дня</h3><p>Каждый урок заканчивается заданием. За 8 недель соберёшь 12 работ в портфолио.</p></div>
+  <div class="card rv"><div class="num">02</div><h3>Разбор каждой работы</h3><p>Автор смотрит твои задания и пишет, что улучшить. Не бот и не куратор-стажёр.</p></div>
+  <div class="card rv"><div class="num">03</div><h3>Выход на заказы</h3><p>Отдельный модуль: как оформить портфолио, где искать клиентов и сколько просить.</p></div>
+ </div>
+</section>
+
+ <div class="mascot mascot2">
+ <svg class="flower" viewBox="0 0 200 200" fill="none" stroke="#ffd400" stroke-width="7" stroke-linecap="round"><path d="M100 95c-10-40 10-80 25-70s5 50-25 70c40-10 80 5 72 22s-48 8-72-22c30 30 35 72 17 75s-22-45-17-75c-20 35-58 50-65 32s30-38 65-32C60 80 40 45 55 35s40 20 45 60z"/></svg>
+ <svg class="cat" viewBox="0 0 200 220">
+  <path d="M50 70 40 10l45 35h30l45-35-10 60c18 18 25 40 25 62 0 50-40 82-75 82S25 182 25 132c0-22 7-44 25-62z" fill="#111"/>
+  <g class="eye"><ellipse cx="75" cy="110" rx="17" ry="20" fill="#fff"/><ellipse cx="125" cy="110" rx="17" ry="20" fill="#fff"/><circle cx="78" cy="113" r="8" fill="#111"/><circle cx="128" cy="113" r="8" fill="#111"/></g>
+  <path d="M92 140q8 8 16 0" stroke="#fff" stroke-width="3" fill="none"/>
+ </svg>
+ </div>
+<section id="prog" style="padding-top:40px">
+ <h2 class="rv"><small>8 недель</small>Программа</h2>
+ <div class="prog">
+  <div class="row rv"><b>Нед. 1</b><div><b>Основы и скетч</b><br><span>форма, линия, как рисовать быстро и смело</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 2</b><div><b>Персонаж</b><br><span>характер через силуэт и позу</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 3</b><div><b>Цвет</b><br><span>палитры, которые не стыдно показать</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 4</b><div><b>Свет и объём</b><br><span>как сделать картинку «дорогой»</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 5</b><div><b>Стикеры и мерч</b><br><span>иллюстрация, которая продаётся</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 6</b><div><b>Простая анимация</b><br><span>оживляем персонажа за вечер</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 7</b><div><b>Портфолио</b><br><span>собираем 12 лучших работ</span></div><div class="w">✳</div></div>
+  <div class="row rv"><b>Нед. 8</b><div><b>Первые заказы</b><br><span>площадки, цены, переписка с клиентом</span></div><div class="w">✳</div></div>
+ </div>
+</section>
+
+<section id="author">
+ <div class="author">
+  <div class="ava rv" style="background:url(img/author.webp) center/cover"><svg style="display:none" viewBox="0 0 200 220"><path d="M50 70 40 10l45 35h30l45-35-10 60c18 18 25 40 25 62 0 50-40 82-75 82S25 182 25 132c0-22 7-44 25-62z" fill="#111"/><ellipse cx="75" cy="110" rx="14" ry="16" fill="#ffd400"/><ellipse cx="125" cy="110" rx="14" ry="16" fill="#ffd400"/></svg><span class="badge">это автор :)</span></div>
+  <div class="rv">
+   <h2><small>кто ведёт</small>Мира Кошкина</h2>
+   <p>Иллюстратор, 9 лет рисует для книг, брендов и игр. Начинала с нуля, без художественной школы, поэтому знает, где новички застревают и как оттуда выбраться.</p>
+   <div class="facts"><div><b>9</b>лет в профессии</div><div><b>120+</b>проектов</div><div><b>1 400</b>выпускников</div></div>
+  </div>
+ </div>
+</section>
+
+<section><h2 class="rv"><small>работы учеников</small>Что получается</h2><div class="works"><div class="rv" style="background-image:url(img/k2.webp)"><span>✳ персонаж за 2 недели</span></div><div class="rv" style="background-image:url(img/k3.webp)"><span>✳ инструменты курса</span></div></div></section>
+<section id="price">
+ <h2 class="rv"><small>выбери формат</small>Тарифы</h2>
+ <div class="grid3">
+  <div class="card price rv"><h3>Сам</h3><div class="p">9 900 ₽</div><ul><li>все уроки</li><li>задания</li><li>общий чат</li></ul><a class="btn" href="#form">Выбрать</a></div>
+  <div class="card price hot rv"><span class="tag">чаще берут</span><h3>С автором</h3><div class="p">19 900 ₽</div><ul><li>всё из «Сам»</li><li>разбор каждой работы</li><li>2 созвона</li><li>модуль про заказы</li></ul><a class="btn" href="#form">Выбрать</a></div>
+  <div class="card price rv"><h3>Наставник</h3><div class="p">39 900 ₽</div><ul><li>всё из «С автором»</li><li>личный план</li><li>ревью портфолио</li><li>помощь с первым заказом</li></ul><a class="btn" href="#form">Выбрать</a></div>
+ </div>
+</section>
+
+<section>
+ <h2 class="rv"><small>что говорят</small>Отзывы</h2>
+ <div class="grid3">
+  <div class="card rev rv">«Через месяц после курса взяла первый заказ на стикерпак. Раньше даже не думала, что так можно»<i>Аня, дизайнер интерфейсов</i></div>
+  <div class="card rev rv">«Наконец-то понял, как работать с цветом. Разборы Миры честные и по делу»<i>Дима, студент</i></div>
+  <div class="card rev rv">«Рисую в метро на iPad, и это уже приносит деньги. Лучшие 20 тысяч, что я потратила»<i>Оля, бухгалтер</i></div>
+ </div>
+</section>
+
+<section>
+ <h2 class="rv"><small>вопросы</small>Частые вопросы</h2>
+ <details class="rv"><summary>Я никогда не рисовал. Получится?</summary><p>Да. Первая неделя как раз про основы, без них никуда. Половина выпускников начинали с нуля.</p></details>
+ <details class="rv"><summary>Что нужно для учёбы?</summary><p>Планшет с Procreate или компьютер с графическим планшетом. Подойдёт и бумага на первых неделях.</p></details>
+ <details class="rv"><summary>Сколько времени занимает?</summary><p>4–6 часов в неделю: 1–2 урока и одно задание.</p></details>
+ <details class="rv"><summary>А если не понравится?</summary><p>Вернём деньги в течение 14 дней после старта, без вопросов.</p></details>
+</section>
+
+<section id="form">
+ <div class="form rv">
+  <div><h2><small style="color:#ffd400">поток 15 ноября</small>Записаться на курс</h2><p>Оставь контакты, пришлём программу и ответим на вопросы.</p></div>
+  <form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block'">
+   <input required placeholder="Имя"><input required placeholder="Телефон или Telegram"><button>Отправить ↘</button>
+  </form>
+  <div class="ok">Спасибо! Мы скоро напишем ✳</div>
+ </div>
+</section>
+</div>
+<footer>Демо-проект</footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.08+'s';io.observe(el)});
+</script>
+<script src="fx.js" defer></script>
+</body>
+</html>

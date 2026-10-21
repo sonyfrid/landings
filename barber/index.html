@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>СТАЛЬ · мужская парикмахерская</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--fxbar:#c8a46a;--fxpillw:900px;--fxglass:rgba(15,15,14,.72);--bg:#0f0f0e;--bg2:#161614;--ink:#ece6da;--mut:#9a948a;--gold:#c8a46a;--line:#2b2a27}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Inter,sans-serif;font-size:18px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.ws{max-width:1280px;margin:0 auto;padding:0 40px}
+header{position:fixed;top:0;left:0;right:0;z-index:40;transition:.4s}
+header.sc{}
+.hd{display:flex;align-items:center;gap:40px;height:92px}
+.logo{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond';font-weight:600;font-size:34px;letter-spacing:.18em}
+.logo svg{width:40px;color:var(--gold)}
+.hd nav{display:flex;align-items:center;gap:30px;margin-left:auto;font-size:17px;white-space:nowrap}
+.hd nav a{position:relative;opacity:.85;line-height:1;white-space:nowrap}
+.hd nav a:after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--gold);transition:.35s}
+.hd nav a:hover:after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--gold);color:var(--gold);padding:15px 28px;font-size:16px;letter-spacing:.06em;transition:.35s;background:none;cursor:pointer;font-family:Inter}
+.btn:hover,.btn.f{background:var(--gold);color:var(--bg)}
+.btn.f:hover{background:transparent;color:var(--gold)}
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bgi{position:absolute;inset:0;background:url(img/b4.webp) center/cover;transform:scale(1.15);animation:kb 18s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,9,.78),rgba(10,10,9,.62) 40%,rgba(10,10,9,.97)),radial-gradient(70% 60% at 25% 70%,rgba(0,0,0,.55),transparent)}
+.hc{position:relative;z-index:2;padding-bottom:90px;width:100%}
+.ey{color:var(--gold);letter-spacing:.3em;font-size:14px;display:flex;align-items:center;gap:14px}
+.ey:before{content:"";height:1px;background:var(--gold);width:0;animation:ln 1.4s .6s forwards}
+@keyframes ln{to{width:70px}}
+h1{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(52px,7.2vw,118px);line-height:.98;margin:22px 0 28px;max-width:1050px}
+h1 em{color:var(--gold)}
+h1 .w{display:inline-block;opacity:0;transform:translateY(40px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.hrow p{max-width:460px;color:#cfc8bb;font-size:19px}
+.stats{display:flex;gap:46px}
+.stats b{font-family:'Cormorant Garamond';font-size:52px;font-weight:500;color:var(--gold);display:block;line-height:1}
+.stats span{font-size:14px;color:var(--mut)}
+.mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
+.mq div{display:inline-block;animation:mq 40s linear infinite;font-family:'Cormorant Garamond';font-style:italic;font-size:40px}
+.mq i{color:var(--gold);font-style:normal;margin:0 26px}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:130px 0}
+.lab{color:var(--gold);letter-spacing:.3em;font-size:13px;margin-bottom:16px}
+h2{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(44px,5.4vw,84px);line-height:1}
+h2 em{color:var(--gold)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.ph1{position:relative;aspect-ratio:4/5}
+.ph1 .im{position:absolute;inset:0;background:url(img/b1.webp) center/cover;filter:grayscale(1) contrast(1.05)}
+.ph1:before{content:"";position:absolute;inset:-22px 22px 22px -22px;border:1px solid var(--gold)}
+.ph1 .seal{position:absolute;right:-50px;bottom:40px;width:130px;height:130px;animation:sp 18s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.about p{color:#cfc8bb;margin-top:24px}
+.sign{font-family:'Cormorant Garamond';font-style:italic;font-size:34px;color:var(--gold);margin-top:30px}
+.price{background:var(--bg2)}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:20px 90px;margin-top:60px}
+.pi{display:flex;align-items:baseline;gap:14px;padding:22px 0;border-bottom:1px solid var(--line);transition:.3s}
+.pi:hover{padding-left:12px;border-color:var(--gold)}
+.pi h3{font-family:'Cormorant Garamond';font-weight:600;font-size:30px;white-space:nowrap}
+.pi .dots{flex:1;border-bottom:1px dotted var(--mut);transform:translateY(-6px)}
+.pi b{font-family:'Cormorant Garamond';font-size:30px;color:var(--gold);font-weight:500}
+.pi small{display:block;color:var(--mut);font-size:15px;font-family:Inter;font-weight:400}
+.ms{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.m .pt{aspect-ratio:4/5;overflow:hidden;background:#fff;position:relative}
+.m .pt img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.m:hover .pt img{transform:scale(1.06)}
+.m .pt span{position:absolute;left:16px;top:16px;background:var(--bg);color:var(--gold);font-size:12px;letter-spacing:.2em;padding:6px 10px}
+.m h3{font-family:'Cormorant Garamond';font-size:36px;font-weight:600;margin-top:20px}
+.m p{color:var(--mut);font-size:16px}
+.m .btn{margin-top:18px;padding:12px 22px;font-size:14px}
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:14px;margin-top:60px}
+.gal div{background-size:cover;background-position:center;filter:grayscale(1);transition:filter .8s,transform .8s}
+.gal div:hover{filter:grayscale(0);transform:scale(.98)}
+.gal div:first-child{grid-row:span 2}
+.gal div:nth-child(4){grid-column:span 2}
+.rev{text-align:center;max-width:900px;margin:0 auto;position:relative;min-height:300px}
+.q{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:.8s}
+.q.on{opacity:1;transform:none}
+.q p{font-family:'Cormorant Garamond';font-style:italic;font-size:clamp(28px,3.4vw,44px);line-height:1.25}
+.q small{display:block;margin-top:24px;color:var(--gold);letter-spacing:.2em;font-size:14px}
+.qm{font-family:'Cormorant Garamond';font-size:140px;color:var(--gold);line-height:.5;height:60px;text-align:center}
+.dots2{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.dots2 i{width:40px;height:2px;background:var(--line);cursor:pointer;transition:.3s}
+.dots2 i.on{background:var(--gold)}
+.book{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;border:1px solid var(--line);padding:70px;background:var(--bg2)}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.book input,.book select{background:transparent;border:0;border-bottom:1px solid var(--mut);color:var(--ink);font:inherit;padding:14px 0;outline:none}
+.book input:focus,.book select:focus{border-color:var(--gold)}
+.book select option{background:var(--bg)}
+.book .full{grid-column:span 2}
+.contacts p{padding:16px 0;border-bottom:1px solid var(--line);color:#cfc8bb}
+.contacts b{display:block;color:var(--gold);font-size:13px;letter-spacing:.2em;font-weight:500}
+.ok{display:none;font-family:'Cormorant Garamond';font-size:44px;color:var(--gold)}
+footer{border-top:1px solid var(--line);padding:36px 0;margin-top:40px;color:var(--mut);font-size:15px}
+footer .ws{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1.1s,transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media(max-width:960px){.ws{padding:0 20px}.hd nav{display:none}.hd .btn{margin-left:auto}.about,.pg,.ms,.book{grid-template-columns:1fr}.about{gap:60px}.ph1 .seal{right:-10px}.gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}.gal div:first-child{grid-row:auto}.book{padding:30px}.book form{grid-template-columns:1fr}.book .full{grid-column:auto}.stats{gap:24px}section{padding:90px 0}.pi h3{white-space:normal}}
+</style>
+</head>
+<body>
+<header id="hdr"><div class="ws hd" data-fxnav>
+ <a class="logo" href="#"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 32 30 6M10 34l4-4M32 34 10 8M30 34l-4-4"/><circle cx="20" cy="20" r="17"/></svg>СТАЛЬ</a>
+ <nav><a href="#about">О нас</a><a href="#price">Услуги</a><a href="#masters">Мастера</a><a href="#gallery">Работы</a><a href="#book">Контакты</a></nav>
+ <a class="btn" href="#book">Записаться</a>
+</div></header>
+
+<section class="hero" style="padding:0">
+ <div class="bgi"></div>
+ <div class="hc ws">
+  <div class="ey">МУЖСКАЯ ПАРИКМАХЕРСКАЯ · С 2016</div>
+  <h1 id="h1">Стрижка, после которой хочется <em>посмотреть в зеркало</em> ещё раз</h1>
+  <div class="hrow">
+   <div><p>Классика и современные стрижки, борода и бритьё горячим полотенцем. Без очереди, по записи, с чашкой хорошего кофе.</p><div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap"><a class="btn f" href="#book">Записаться онлайн</a><a class="btn" href="#price">Цены</a></div></div>
+   <div class="stats"><div><b data-n="9">0</b><span>лет работаем</span></div><div><b data-n="6">0</b><span>мастеров</span></div><div><b data-n="12">0</b><span>тысяч стрижек</span></div></div>
+  </div>
+ </div>
+</section>
+
+<div class="mq"><div>Стрижка<i>✦</i>Борода<i>✦</i>Королевское бритьё<i>✦</i>Камуфляж седины<i>✦</i>Отец и сын<i>✦</i>Стрижка<i>✦</i>Борода<i>✦</i>Королевское бритьё<i>✦</i>Камуфляж седины<i>✦</i>Отец и сын<i>✦</i></div></div>
+
+<section id="about"><div class="ws about">
+ <div class="ph1 rv"><div class="im" data-par="0.06"></div><svg class="seal" viewBox="0 0 100 100"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><circle cx="50" cy="50" r="49" fill="#0f0f0e" stroke="#c8a46a"/><text fill="#c8a46a" font-size="9.5" letter-spacing="2" font-family="Inter"><textPath href="#c">СТАЛЬ ✦ С 2016 ✦ МАСТЕРСТВО ✦ </textPath></text><path d="M40 62 60 38M40 38l20 24" stroke="#c8a46a" stroke-width="2"/></svg></div>
+ <div class="rv">
+  <div class="lab">О НАС</div>
+  <h2>Место, где мужчины <em>не торопятся</em></h2>
+  <p>Мы не работаем на поток. На каждую стрижку отводим 45 минут: сначала разговор о том, что вы хотите и как живёте с причёской, потом работа, мойка и укладка.</p>
+  <p>Мастера проходят обучение каждый год, а инструмент мы стерилизуем после каждого гостя. Здесь можно выдохнуть: вам нальют кофе, а телефон можно не доставать.</p>
+  <div class="sign">Артём Волков, основатель</div>
+ </div>
+</div></section>
+
+<section class="price" id="price"><div class="ws">
+ <div class="lab rv">УСЛУГИ И ЦЕНЫ</div><h2 class="rv">Прайс</h2>
+ <div class="pg">
+  <div class="pi rv"><h3>Мужская стрижка<small>мытьё, стрижка, укладка · 45 мин</small></h3><span class="dots"></span><b>1 800 ₽</b></div>
+  <div class="pi rv"><h3>Стрижка + борода<small>самое популярное · 75 мин</small></h3><span class="dots"></span><b>2 700 ₽</b></div>
+  <div class="pi rv"><h3>Моделирование бороды<small>форма, контур, уход · 30 мин</small></h3><span class="dots"></span><b>1 200 ₽</b></div>
+  <div class="pi rv"><h3>Королевское бритьё<small>горячее полотенце, опасная бритва · 40 мин</small></h3><span class="dots"></span><b>1 500 ₽</b></div>
+  <div class="pi rv"><h3>Камуфляж седины<small>естественный тон · 20 мин</small></h3><span class="dots"></span><b>1 300 ₽</b></div>
+  <div class="pi rv"><h3>Отец и сын<small>две стрижки · 80 мин</small></h3><span class="dots"></span><b>3 000 ₽</b></div>
+ </div>
+</div></section>
+
+<section id="masters"><div class="ws">
+ <div class="lab rv">КОМАНДА</div><h2 class="rv">Мастера</h2>
+ <div class="ms">
+  <div class="m rv"><div class="pt"><img src="img/m1.webp" alt="Артём"><span>ТОП-МАСТЕР</span></div><h3>Артём</h3><p>9 лет · классические стрижки и борода</p><a class="btn" href="#book" onclick="pickM('Артём')">Записаться к Артёму</a></div>
+  <div class="m rv"><div class="pt"><img src="img/m2.webp" alt="Марк"><span>СТИЛИСТ</span></div><h3>Марк</h3><p>5 лет · фейды, кроп, текстура</p><a class="btn" href="#book" onclick="pickM('Марк')">Записаться к Марку</a></div>
+  <div class="m rv"><div class="pt"><img src="img/m3.webp" alt="Илья"><span>БАРБЕР</span></div><h3>Илья</h3><p>6 лет · бритьё и уход за бородой</p><a class="btn" href="#book" onclick="pickM('Илья')">Записаться к Илье</a></div>
+ </div>
+</div></section>
+
+<section id="gallery" style="padding-top:0"><div class="ws">
+ <div class="lab rv">РАБОТЫ</div><h2 class="rv">Из нашего кресла</h2>
+ <div class="gal" data-clip>
+  <div class="rv" style="background-image:url(img/b5.webp)"></div><div class="rv" style="background-image:url(img/b3.webp)"></div><div class="rv" style="background-image:url(img/b2.webp)"></div><div class="rv" style="background-image:url(img/b6.webp)"></div>
+ </div>
+</div></section>
+
+<section style="background:var(--bg2);position:relative" data-orbs="#c8a46a,#8a7046,#5a4a30" data-shapes="scissors,razor,comb,mustache" data-orbs-n="8"><div class="ws" style="position:relative;z-index:1">
+ <div class="qm">“</div>
+ <div class="rev">
+  <div class="q on"><p>Хожу третий год. Ни разу не ждал дольше двух минут, и каждый раз выхожу с той стрижкой, которую хотел.</p><small>ДМИТРИЙ · ГОСТЬ С 2023</small></div>
+  <div class="q"><p>Привёл сына на первую взрослую стрижку. Мастер нашёл подход, теперь ходим вместе раз в месяц.</p><small>СЕРГЕЙ · «ОТЕЦ И СЫН»</small></div>
+  <div class="q"><p>Королевское бритьё — отдельное удовольствие. Рекомендую всем, кто ещё не пробовал.</p><small>АНДРЕЙ · ГОСТЬ С 2021</small></div>
+ </div>
+ <div class="dots2" id="dots"><i class="on"></i><i></i><i></i></div>
+</div></section>
+
+<section id="book"><div class="ws">
+ <div class="book rv">
+  <div class="contacts">
+   <div class="lab">ЗАПИСЬ</div><h2 style="margin-bottom:30px">Выберите <em>время</em></h2>
+   <p><b>АДРЕС</b>ул. Стальная, 12</p><p><b>ЧАСЫ</b>ежедневно 10:00–22:00</p><p><b>ТЕЛЕФОН</b>+7 900 000-00-00</p>
+  </div>
+  <div>
+   <form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block'">
+    <input required placeholder="Имя"><input required placeholder="Телефон">
+    <select class="full"><option>Мужская стрижка</option><option>Стрижка + борода</option><option>Моделирование бороды</option><option>Королевское бритьё</option><option>Отец и сын</option></select>
+    <select id="msel"><option>Любой мастер</option><option>Артём</option><option>Марк</option><option>Илья</option></select><input type="date" required>
+    <button class="btn f full" style="justify-content:center;margin-top:14px">Записаться</button>
+   </form>
+   <div class="ok">Спасибо. Ждём вас ✦</div>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="ws"><span class="logo" style="font-size:24px"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" style="width:30px"><path d="M8 32 30 6M10 34l4-4M32 34 10 8M30 34l-4-4"/><circle cx="20" cy="20" r="17"/></svg>СТАЛЬ</span><span>Демо-проект</span></div></footer>
+
+<script>
+const h=document.getElementById('h1');let d=0;h.innerHTML=h.innerHTML.replace(/(<em>.*?<\/em>|[^\s<]+)/g,m=>`<span class="w" style="animation-delay:${(d+=.07).toFixed(2)}s">${m}</span>`);
+addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('sc',scrollY>60));
+function pickM(n){document.getElementById('msel').value=n}
+const qs=[...document.querySelectorAll('.q')],ds=[...document.querySelectorAll('#dots i')];let qi=0;
+function sh(i){qs[qi].classList.remove('on');ds[qi].classList.remove('on');qi=i;qs[qi].classList.add('on');ds[qi].classList.add('on')}
+ds.forEach((x,i)=>x.onclick=()=>sh(i));setInterval(()=>sh((qi+1)%qs.length),6000);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');io.unobserve(e.target)}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.1+'s';io.observe(el)});
+setTimeout(()=>document.querySelectorAll('[data-n]').forEach(b=>{const n=+b.dataset.n,st=performance.now();(function f(now){const k=Math.min(1,(now-st)/1800);b.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(st)}),900);
+</script>
+<script src="fx.js" defer></script>
+</body>
+</html>

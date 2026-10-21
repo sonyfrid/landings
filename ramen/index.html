@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кумо · раменная и кофейня (демо)</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Noto+Serif+JP:wght@700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--fxbar:#fbeee6;--fxpillw:760px;--fxglass:rgba(168,13,38,.78);--bg:#c8102e;--red:#fbeee6;--ink:#fff6f0;--pale:#a80d26}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;line-height:1.55;overflow-x:hidden;font-size:18px}
+.frame{position:relative;max-width:1200px;margin:24px auto;border:1px solid var(--red);padding:0 40px}
+.frame:before,.frame:after{content:"";position:absolute;left:-1px;right:-1px;height:10px;border-left:1px solid var(--red);border-right:1px solid var(--red)}
+.side{position:absolute;top:50%;writing-mode:vertical-rl;color:var(--red);font-family:Oswald;font-size:12px;letter-spacing:.3em}
+.side.l{left:12px;transform:translateY(-50%) rotate(180deg)}.side.r{right:12px;transform:translateY(-50%)}
+nav{position:sticky;top:0;z-index:30;background:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid var(--red);color:var(--red);font-family:Oswald;letter-spacing:.12em;font-size:18px;flex-wrap:wrap;gap:12px}
+nav a{color:var(--red);text-decoration:none;margin-left:22px;position:relative}
+nav a:after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:0;background:var(--red);transition:.3s}
+nav a:hover:after{width:100%}
+.brand{font-family:'Noto Serif JP';font-size:36px;letter-spacing:.05em}
+.hero{text-align:center;padding:70px 0 80px;position:relative}.hero>*:not(.fxorbs){position:relative;z-index:1}
+.mon{width:170px;margin:0 auto;animation:turn 30s linear infinite}
+@keyframes turn{to{transform:rotate(360deg)}}
+.meta{display:flex;justify-content:center;gap:60px;margin:26px 0;color:var(--red);font-family:Oswald;font-size:13px;letter-spacing:.15em}
+.meta b{display:block;font-size:17px}
+h1{color:var(--red);font-family:Oswald;font-weight:700;font-size:clamp(34px,5.4vw,66px);line-height:1.05;text-transform:uppercase;max-width:920px;margin:0 auto}
+.lead{max-width:600px;margin:24px auto 0;font-size:20px;color:#ffd9d2}
+.jp{font-family:'Noto Serif JP';color:#fff;font-size:120px;opacity:.12;position:absolute;left:50%;top:40%;transform:translateX(-50%);white-space:nowrap;pointer-events:none}
+.btn{display:inline-block;margin-top:30px;background:var(--red);color:#c8102e;font-family:Oswald;letter-spacing:.15em;padding:14px 34px;text-decoration:none;transition:.25s;border:1px solid var(--red)}
+.btn:hover{background:transparent;color:var(--red)}
+.steam{position:relative;height:60px;width:120px;margin:0 auto -10px}
+.steam i{position:absolute;bottom:0;width:4px;height:40px;border-radius:4px;background:var(--red);opacity:0;animation:st 3s infinite}
+.steam i:nth-child(1){left:30px}.steam i:nth-child(2){left:58px;animation-delay:1s}.steam i:nth-child(3){left:86px;animation-delay:2s}
+@keyframes st{0%{opacity:0;transform:translateY(10px) scaleY(.5)}40%{opacity:.6}100%{opacity:0;transform:translateY(-30px) scaleY(1.2)}}
+section{padding:70px 0;border-top:1px solid var(--red)}
+.h2{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;color:var(--red)}
+.h2 h2{font-family:Oswald;font-size:clamp(34px,4.5vw,54px);text-transform:uppercase;line-height:1}
+.h2 span{font-family:Oswald;letter-spacing:.2em;font-size:13px}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 50px}
+.item{display:grid;grid-template-columns:60px 1fr auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px dashed var(--red);transition:.25s}
+.item:hover{background:var(--pale);padding-left:10px}
+.item .n{font-family:'Noto Serif JP';color:var(--red);font-size:28px}
+.item h3{font-family:Oswald;font-size:22px;text-transform:uppercase}
+.item p{font-size:14px;color:#ffd9d2}
+.item .pr{font-family:Oswald;color:var(--red);font-size:24px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.bowl{aspect-ratio:1;border:1px solid var(--red);display:grid;place-items:center;position:relative}
+.bowl svg{width:70%}
+.bowl:before{content:"一杯";position:absolute;top:14px;left:16px;font-family:'Noto Serif JP';color:var(--red)}
+.story h3{font-family:Oswald;color:var(--red);font-size:36px;text-transform:uppercase;line-height:1.05;margin-bottom:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--red)}
+.three div{padding:28px;border-right:1px solid var(--red)}.three div:last-child{border-right:0}
+.three b{font-family:Oswald;color:var(--red);font-size:40px;display:block}
+.book{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.info p{padding:12px 0;border-bottom:1px solid var(--pale)}
+.info b{color:var(--red);font-family:Oswald;letter-spacing:.1em;display:block;font-size:13px}
+form input,form select{width:100%;padding:14px;margin-bottom:12px;border:1px solid var(--red);background:transparent;font:inherit;color:var(--ink);outline:none}
+form input:focus{background:#a80d26}form input::placeholder{color:#ffc9c0}form select option{color:#000}
+form button{width:100%;background:var(--red);color:#c8102e;border:0;padding:16px;font-family:Oswald;letter-spacing:.2em;font-size:16px;cursor:pointer;transition:.2s}
+form button:hover{letter-spacing:.3em}
+.ok{display:none;color:var(--red);font-family:Oswald;font-size:26px;text-align:center;padding:40px 0}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.gg div{aspect-ratio:1;background-size:cover;background-position:center;border:1px solid var(--red);position:relative;transition:transform .5s}.gg div:hover{transform:scale(1.03) rotate(-1deg)}.gg span{position:absolute;left:12px;bottom:12px;background:var(--bg);color:var(--red);font-family:Oswald;letter-spacing:.15em;padding:4px 10px}@media(max-width:820px){.gg{grid-template-columns:1fr}}
+.band{height:380px;margin:0 -40px;background:url(img/r2.webp) center/cover;border-top:1px solid var(--red);border-bottom:1px solid var(--red);background-attachment:fixed}@media(max-width:820px){.band{margin:0 -18px;height:240px;background-attachment:scroll}}
+footer{text-align:center;padding:30px 0;color:var(--red);font-size:13px;border-top:1px solid var(--red)}
+.rv{opacity:0;transform:translateY(24px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media(max-width:820px){.frame{margin:10px;padding:0 18px}.side{display:none}.menu,.split,.book{grid-template-columns:1fr}.three{grid-template-columns:1fr}.three div{border-right:0;border-bottom:1px solid var(--red)}.meta{gap:20px}nav a{margin-left:12px}.jp{font-size:70px}}
+</style>
+</head>
+<body>
+<div class="frame">
+<span class="side l">RAMEN · COFFEE · SINCE 2019</span><span class="side r">雲 KUMO · ДЕМО-ПРОЕКТ</span>
+<nav data-fxnav="smooth"><div class="brand">雲 КУМО</div><div><a href="#menu">МЕНЮ</a><a href="#story">О НАС</a><a href="#book">БРОНЬ</a></div></nav>
+
+<header class="hero" data-orbs="#fbeee6,#ffb3bf,#7a0018" data-shapes="bowl" data-orbs-n="7">
+ <div class="jp">ラーメン</div>
+ <svg class="mon" viewBox="0 0 100 100"><g fill="#fbeee6"><circle cx="50" cy="50" r="48" fill="none" stroke="#fbeee6" stroke-width="2"/>
+ <path d="M50 14c10 12 10 24 0 32-10-8-10-20 0-32zM86 50c-12 10-24 10-32 0 8-10 20-10 32 0zM50 86c-10-12-10-24 0-32 10 8 10 20 0 32zM14 50c12-10 24-10 32 0-8 10-20 10-32 0z"/><circle cx="50" cy="50" r="7"/></g></svg>
+ <div class="meta"><div>ГОРОД<b>Центр, ул. Облачная 7</b></div><div>ОТКРЫТО<b>ежедневно 11–23</b></div></div>
+ <div class="steam"><i></i><i></i><i></i></div>
+ <h1 class="rv">Бульон варим 18 часов, кофе обжариваем сами. Приходите за раменом, оставайтесь на десерт</h1>
+ <p class="lead rv">Небольшая раменная с кофейным баром. Тонкая лапша ручной работы, четыре бульона и матча, как в Киото.</p>
+ <a class="btn" href="#book">ЗАБРОНИРОВАТЬ СТОЛ</a>
+</header>
+
+<div class="band rv"></div>
+<section id="menu">
+ <div class="h2 rv"><h2>Меню</h2><span>品書き · ВЫБОР ГОСТЕЙ</span></div>
+ <div class="menu">
+  <div class="item rv"><div class="n">一</div><div><h3>Тонкоцу</h3><p>свиной бульон 18 часов, чашу, яйцо аджитама</p></div><div class="pr">590</div></div>
+  <div class="item rv"><div class="n">二</div><div><h3>Сёю</h3><p>соевый бульон, курица, нори, бамбук</p></div><div class="pr">540</div></div>
+  <div class="item rv"><div class="n">三</div><div><h3>Мисо</h3><p>пряный мисо, кукуруза, сливочное масло</p></div><div class="pr">560</div></div>
+  <div class="item rv"><div class="n">四</div><div><h3>Веган-рамен</h3><p>грибной даши, тофу, шпинат</p></div><div class="pr">490</div></div>
+  <div class="item rv"><div class="n">五</div><div><h3>Гёдза</h3><p>6 штук, свинина или овощи</p></div><div class="pr">320</div></div>
+  <div class="item rv"><div class="n">六</div><div><h3>Матча-латте</h3><p>церемониальная матча, овсяное молоко</p></div><div class="pr">290</div></div>
+ </div>
+</section>
+
+<section id="story">
+ <div class="split">
+  <div class="bowl rv" style="background:url(img/r1.webp) center/cover"><svg style="display:none" viewBox="0 0 200 160" fill="none" stroke="#fbeee6" stroke-width="4" stroke-linecap="round"><path d="M20 70h160c0 45-35 80-80 80S20 115 20 70z"/><path d="M60 60c0-20 15-20 15-40M100 60c0-20 15-20 15-40M140 60c0-20 15-20 15-40"/><path d="M130 30l50-25M135 40l50-25"/><circle cx="80" cy="95" r="12"/><path d="M110 90h30M115 105h25"/></svg></div>
+  <div class="story rv"><h3>Как в маленьких раменных Токио</h3><p>Двенадцать мест у стойки, повар готовит при вас. Мы не делаем меню на 40 позиций: только четыре рамена, но каждый доведён до ума. Лапшу раскатываем утром, бульон варим ночью.</p><br><p>Днём здесь кофейня: обжариваем зерно небольшими партиями и варим фильтр-кофе для тех, кто зашёл поработать.</p></div>
+ </div>
+ <br><br>
+ <div class="three rv"><div><b>18 ч</b>варится бульон</div><div><b>12</b>мест у стойки</div><div><b>4,9</b>рейтинг гостей</div></div>
+</section>
+
+<section class="gal"><div class="h2 rv"><h2>Сегодня на стойке</h2><span>写真 · ФОТО ГОСТЕЙ</span></div><div class="gg"><div class="rv" style="background-image:url(img/r2.webp)"><span>Тонкоцу</span></div><div class="rv" style="background-image:url(img/r4.webp)"><span>Гёдза</span></div><div class="rv" style="background-image:url(img/r3.webp)"><span>Матча</span></div></div></section>
+<section id="book">
+ <div class="h2 rv"><h2>Бронь стола</h2><span>予約 · ОТВЕТИМ ЗА 10 МИНУТ</span></div>
+ <div class="book">
+  <div class="info rv"><p><b>АДРЕС</b>ул. Облачная, 7 (демо)</p><p><b>ЧАСЫ</b>ежедневно с 11:00 до 23:00</p><p><b>КУХНЯ</b>последний заказ в 22:30</p><p><b>ДОСТАВКА</b>в радиусе 3 км, 40–60 минут</p></div>
+  <div class="rv">
+   <form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block'">
+    <input required placeholder="Имя"><input required placeholder="Телефон"><input type="date" required><select><option>2 гостя</option><option>3 гостя</option><option>4 гостя</option><option>Компания 5+</option></select><button>ЗАБРОНИРОВАТЬ</button>
+   </form>
+   <div class="ok">ありがとう! Ждём вас</div>
+  </div>
+ </div>
+</section>
+<footer>Демо-проект</footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*.07+'s';io.observe(el)});
+</script>
+<script src="fx.js" defer></script>
+</body>
+</html>

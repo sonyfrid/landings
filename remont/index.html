@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>КВАДРАТ · ремонт квартир без нервов (демо)</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--fxbar:#ff90e8;--fxpillw:1180px;--fxglass:rgba(255,255,255,.82);--bg:#f3f0e8;--ink:#141414;--pink:#ff90e8;--yel:#ffc900;--vio:#a5a6f6;--grn:#23a094;--bl:#90a8ed}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;line-height:1.5;overflow-x:hidden;font-size:19px}
+a{color:inherit;text-decoration:none}
+.ws{max-width:1240px;margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.02em}
+nav{border-bottom:2px solid var(--ink);background:#fff;position:sticky;top:0;z-index:20;transition:background .5s,border-color .5s}nav:has(.fxpill){background:transparent;border-color:transparent}nav .fxpill{border:2px solid var(--ink)!important;box-shadow:5px 5px 0 var(--ink)!important}nav .fxpill .cta{border-radius:999px;padding:12px 22px}
+nav .ws{display:flex;align-items:center;gap:22px;height:88px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Oswald;font-weight:700;font-size:36px;letter-spacing:.04em}
+.logo i{width:40px;height:40px;background:var(--yel);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);display:inline-block;transform:rotate(-8deg);transition:.3s}
+.logo:hover i{transform:rotate(80deg)}
+.nl{display:flex;gap:6px;margin-left:auto}
+.nl a{white-space:nowrap;font-size:19px;font-weight:600;padding:10px 16px;border-radius:99px;transition:.2s}
+.nl a:hover{background:var(--ink);color:#fff}
+.cta{white-space:nowrap;background:var(--ink);color:#fff;font-weight:800;font-size:18px;padding:16px 26px;border:2px solid var(--ink);transition:.15s;display:inline-flex;gap:8px;align-items:center}
+.cta:hover{background:var(--pink);color:var(--ink);box-shadow:4px 4px 0 var(--ink);transform:translate(-2px,-2px)}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:56px 0 40px;align-items:center}
+h1{font-family:Oswald;font-weight:700;font-size:clamp(54px,8vw,108px);line-height:.9;text-transform:uppercase}
+h1 mark{background:var(--yel);padding:0 10px;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);display:inline-block;transform:rotate(-2deg)}
+.lead{font-size:23px;max-width:540px;margin:26px 0;line-height:1.45}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.inp{border:2px solid var(--ink);background:#fff;padding:16px 18px;font:inherit;font-size:18px;min-width:260px}
+.art{position:relative;height:500px}
+.blob{position:absolute;inset:40px 0 0 60px;background:var(--vio);border:2px solid var(--ink);border-radius:40% 60% 50% 50%/50% 40% 60% 50%;animation:morph 9s ease-in-out infinite}
+@keyframes morph{50%{border-radius:60% 40% 40% 60%/40% 60% 40% 60%}}
+.coin{position:absolute;width:150px;height:150px;border-radius:50%;background:var(--pink);border:3px solid var(--ink);display:grid;place-items:center;font-family:Oswald;font-size:58px;box-shadow:0 26px 0 -10px rgba(0,0,0,.85);animation:coin 4s ease-in-out infinite}
+.coin.c1{left:40%;top:16%;width:220px;height:220px;font-size:90px}
+.coin.c2{left:8%;top:6%;animation-delay:-1.3s;background:var(--yel)}
+.coin.c3{right:2%;bottom:16%;animation-delay:-2.4s;width:120px;height:120px;font-size:44px}
+@keyframes coin{50%{transform:translateY(-18px) rotateY(25deg)}}
+.house{position:absolute;left:14%;bottom:6%;width:46%;background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:14px}
+.house .mono{font-size:14px}
+.bar{height:12px;border:2px solid var(--ink);margin-top:8px;background:#fff;position:relative;overflow:hidden}
+.bar i{position:absolute;top:0;bottom:0;left:0;width:0;background:var(--grn);animation:fill 3s 1s cubic-bezier(.3,.8,.3,1) forwards}
+@keyframes fill{to{width:78%}}
+.lines{position:absolute;left:4%;top:50%;width:90px;animation:wig 3s ease-in-out infinite}
+@keyframes wig{50%{transform:rotate(12deg)}}
+.ticker{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:#fff;white-space:nowrap;overflow:hidden;padding:12px 0}
+.ticker div{display:inline-block;animation:mq 26s linear infinite}
+.ticker span{margin:0 20px}
+.ticker b{color:var(--yel)}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:80px 0}
+h2{font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:clamp(40px,5.6vw,72px);line-height:.95;margin-bottom:28px}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.box{border:2px solid var(--ink);background:#fff;padding:24px;position:relative;transition:.15s}
+.box:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--ink)}
+.box h3{font-family:'JetBrains Mono';font-size:19px;text-transform:uppercase;margin-bottom:8px}
+.box.y{background:var(--yel)}.box.p{background:var(--pink)}.box.v{background:var(--vio)}.box.g{background:var(--grn);color:#fff}.box.b{background:var(--bl)}
+.box.wide{grid-column:span 2}
+.box .big{font-family:Oswald;font-size:56px;line-height:1}
+.box .ic{width:70px;height:70px;margin-bottom:16px}
+.chart{display:flex;align-items:flex-end;gap:8px;height:110px;margin-top:14px}
+.chart i{flex:1;background:var(--ink);transform-origin:bottom;transform:scaleY(0);transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
+.on .chart i{transform:scaleY(1)}
+/* calc */
+.calc{display:grid;grid-template-columns:1.1fr .9fr;border:2px solid var(--ink);background:#fff;box-shadow:10px 10px 0 var(--ink)}
+.calc .l{padding:34px;border-right:2px solid var(--ink)}
+.calc .r{padding:34px;background:var(--yel);display:flex;flex-direction:column;justify-content:space-between}
+.calc label{display:block;font-weight:800;margin:18px 0 8px}
+input[type=range]{width:100%;accent-color:var(--ink)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{border:2px solid var(--ink);background:#fff;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer;transition:.15s}
+.seg button.on{background:var(--ink);color:#fff}
+.seg button:hover{background:var(--pink);color:var(--ink)}
+.price{font-family:Oswald;font-size:64px;line-height:1}
+.chk{display:flex;gap:8px;align-items:center;margin-top:10px;font-weight:600}
+.chk input{width:20px;height:20px;accent-color:var(--ink)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--ink);background:#fff}
+.st{padding:24px;border-right:2px solid var(--ink);text-align:center}
+.st:last-child{border-right:0}
+.bubble{border:2px solid var(--ink);border-radius:14px;padding:8px 12px;font-size:16px;font-weight:700;display:inline-block;margin-bottom:12px;position:relative;background:#fff}
+.bubble:after{content:"";position:absolute;left:50%;bottom:-9px;width:14px;height:14px;background:#fff;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateX(-50%) rotate(45deg)}
+.circ{width:150px;height:150px;border-radius:50%;border:2px solid var(--ink);margin:0 auto 14px;display:grid;place-items:center;transition:.3s}
+.st:hover .circ{transform:rotate(-8deg) scale(1.05)}
+.circ svg{width:60%}
+.st b{font-family:Oswald;font-size:28px;display:block}
+/* before after */
+.ba{position:relative;aspect-ratio:16/8;border:2px solid var(--ink);overflow:hidden;box-shadow:10px 10px 0 var(--ink);user-select:none}
+.ba .side{position:absolute;inset:0}
+.ba .after{clip-path:inset(0 0 0 50%)}
+.ba .lbl{position:absolute;top:14px;background:var(--ink);color:#fff;padding:6px 12px;font-size:12px}
+.ba .before .lbl{left:14px}.ba .after .lbl{right:14px;background:var(--pink);color:var(--ink);border:2px solid var(--ink)}
+.ba .handle{position:absolute;top:0;bottom:0;left:50%;width:4px;background:var(--ink);transform:translateX(-2px)}
+.ba .handle:after{content:"⇆";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--yel);border:2px solid var(--ink);display:grid;place-items:center;font-weight:800}
+.ba input{position:absolute;inset:0;opacity:0;cursor:ew-resize;width:100%;height:100%}
+.ba svg{width:100%;height:100%}
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rv2 .who{display:flex;align-items:center;gap:12px;margin-top:16px}
+.ava{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-family:Oswald;font-size:20px}
+/* form */
+.final{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink)}
+.final .l{background:var(--pink);padding:44px;border-right:2px solid var(--ink)}
+.final .r{background:#fff;padding:44px}
+.final input,.final select{width:100%;border:2px solid var(--ink);padding:14px;font:inherit;margin-bottom:12px;background:#fff}
+.final button{width:100%;font-size:17px;justify-content:center}
+.ok{display:none;font-family:Oswald;font-size:38px}
+.sticker{position:absolute;right:30px;top:-40px;width:130px;height:130px;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bigx{font-family:Oswald;font-weight:700;font-size:clamp(70px,10vw,150px);line-height:1.1;text-transform:uppercase;color:var(--ink);overflow:visible;margin:20px 0 40px}
+footer{border-top:2px solid var(--ink);padding:30px 0;text-align:center;font-size:14px}
+.rv{opacity:0;transform:translateY(30px);transition:.7s cubic-bezier(.2,.8,.2,1)}.rv.on{opacity:1;transform:none}
+@media(max-width:900px){.hero,.calc,.final{grid-template-columns:1fr}.calc .l,.final .l{border-right:0;border-bottom:2px solid var(--ink)}.bento,.revs{grid-template-columns:1fr}.box.wide{grid-column:auto}.steps{grid-template-columns:1fr 1fr}.st:nth-child(2){border-right:0}.st:nth-child(-n+2){border-bottom:2px solid var(--ink)}.nl{display:none}.art{height:380px}.ba{aspect-ratio:4/3}nav .cta{margin-left:auto}}
+</style>
+</head>
+<body>
+<nav><div class="ws" data-fxnav><a class="logo" href="#"><i></i>КВАДРАТ</a><div class="nl"><a href="#calc">Калькулятор</a><a href="#steps">Как работаем</a><a href="#works">Работы</a><a href="#rev">Отзывы</a></div><a class="cta" href="#form">Вызвать замерщика ↗</a></div></nav>
+
+<div class="ws">
+ <header class="hero">
+  <div>
+   <div class="mono" style="font-size:17px">ремонт квартир под ключ · с 2014 года</div>
+   <h1 style="margin-top:14px">От бетона<br>до <mark>уюта</mark><br>за 60 дней</h1>
+   <p class="lead">Фиксируем смету в договоре. Если выйдем за срок, платим неустойку из своего кармана. Фотоотчёт каждый день в Telegram.</p>
+   <div class="row"><input class="inp" placeholder="Площадь квартиры, м²" id="hq"><a class="cta" href="#calc" onclick="if(hq.value)area.value=hq.value;calc()">Рассчитать ↗</a></div>
+  </div>
+  <div class="art">
+   <div class="blob"></div>
+   <svg class="lines" viewBox="0 0 100 100" fill="none" stroke="#141414" stroke-width="4" stroke-linecap="round"><path d="M20 30l20 10M15 55h24M20 80l20-10"/></svg>
+   <div class="coin c2">✓</div><div class="coin c1">К²</div><div class="coin c3">₽</div>
+   <div class="house"><div class="mono">объект · ул. Летняя, 12</div><b>Готовность 78%</b><div class="bar"><i></i></div><div class="mono" style="margin-top:8px">срок: в графике ✓</div></div>
+  </div>
+ </header>
+</div>
+
+<div class="ticker mono"><div><span><b>✦</b> смета не растёт</span><span><b>✦</b> гарантия 3 года</span><span><b>✦</b> своя бригада, без субподряда</span><span><b>✦</b> закупка материалов со скидкой до 20%</span><span><b>✦</b> уборка после ремонта бесплатно</span><span><b>✦</b> смета не растёт</span><span><b>✦</b> гарантия 3 года</span><span><b>✦</b> своя бригада, без субподряда</span><span><b>✦</b> закупка материалов со скидкой до 20%</span><span><b>✦</b> уборка после ремонта бесплатно</span></div></div>
+
+<section data-orbs="#ff90e8,#ffc900,#a5a6f6,#23a094" data-shapes="roller,hammer,house,ruler,brick" data-orbs-n="8"><div class="ws" style="position:relative;z-index:1">
+ <h2 class="rv">Почему мы</h2>
+ <div class="bento">
+  <div class="box y rv"><svg class="ic" viewBox="0 0 70 70" fill="none" stroke="#141414" stroke-width="3"><rect x="8" y="14" width="54" height="44"/><path d="M8 26h54M20 8v12M50 8v12M20 38h10M36 38h14M20 48h22"/></svg><h3>Смета в договоре</h3><p>Цена не вырастет, даже если подорожают материалы.</p></div>
+  <div class="box wide rv" id="ch"><h3>Сдаём в срок</h3><p>Процент объектов, сданных вовремя, по годам</p><div class="chart"><i style="height:62%"></i><i style="height:70%;transition-delay:.1s"></i><i style="height:78%;transition-delay:.2s"></i><i style="height:84%;transition-delay:.3s"></i><i style="height:91%;transition-delay:.4s"></i><i style="height:96%;transition-delay:.5s;background:var(--grn)"></i></div><div class="mono" style="display:flex;justify-content:space-between;font-size:11px;margin-top:6px"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div></div>
+  <div class="box p rv"><div class="big" data-n="420">0</div><h3>квартир сдано</h3><p>от студий до пентхаусов</p></div>
+  <div class="box v rv" style="padding:0;overflow:hidden"><div style="height:160px;background:url(img/w1.webp) center/cover;border-bottom:2px solid var(--ink)"></div><div style="padding:20px"><svg class="ic" style="display:none" viewBox="0 0 70 70" fill="none" stroke="#141414" stroke-width="3"><path d="M10 16h50v36H32l-12 10V52H10z"/><path d="M22 30h26M22 40h16"/></svg><h3>Фотоотчёт каждый день</h3><p>Видите стройку из офиса или с моря.</p></div></div>
+  <div class="box g rv"><div class="big" data-n="3">0</div><h3>года гарантии</h3><p>Приедем и исправим за наш счёт.</p></div>
+ </div>
+</div></section>
+
+<section id="calc" style="background:#fff;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)"><div class="ws">
+ <h2 class="rv">Калькулятор ремонта</h2>
+ <div class="calc rv">
+  <div class="l">
+   <label>Площадь: <span id="av">50</span> м²</label><input type="range" id="area" min="20" max="200" value="50" oninput="calc()">
+   <label>Тип ремонта</label><div class="seg" id="type"><button data-p="9000">Косметический</button><button data-p="16000" class="on">Капитальный</button><button data-p="25000">Дизайнерский</button></div>
+   <label>Дом</label><div class="seg" id="home"><button data-k="1" class="on">Новостройка</button><button data-k="1.15">Вторичка</button></div>
+   <label class="chk"><input type="checkbox" id="mat" onchange="calc()"> Закупка материалов нами (−20% к цене магазина)</label>
+   <label class="chk"><input type="checkbox" id="des" onchange="calc()"> Дизайн-проект (+1 500 ₽/м²)</label>
+  </div>
+  <div class="r">
+   <div><div class="mono">ориентировочная стоимость</div><div class="price" id="pr">0 ₽</div><p id="term" style="margin-top:8px;font-weight:700"></p></div>
+   <a class="cta" href="#form" style="justify-content:center">Зафиксировать цену ↗</a>
+  </div>
+ </div>
+</div></section>
+
+<section id="steps"><div class="ws">
+ <h2 class="rv">Как работаем</h2>
+ <div class="steps rv">
+  <div class="st"><div class="bubble">Приедем завтра</div><div class="circ" style="background:var(--yel)"><svg viewBox="0 0 60 60" fill="none" stroke="#141414" stroke-width="3"><path d="M8 50 50 8M14 44l4 4M22 36l4 4M30 28l4 4M38 20l4 4"/></svg></div><b>Замер</b>бесплатно, за 1 час</div>
+  <div class="st"><div class="bubble">Без сюрпризов</div><div class="circ" style="background:var(--pink)"><svg viewBox="0 0 60 60" fill="none" stroke="#141414" stroke-width="3"><rect x="12" y="8" width="36" height="44"/><path d="M20 20h20M20 30h20M20 40h12"/></svg></div><b>Смета</b>фиксируем в договоре</div>
+  <div class="st"><div class="bubble">Фото каждый день</div><div class="circ" style="background:var(--vio)"><svg viewBox="0 0 60 60" fill="none" stroke="#141414" stroke-width="3"><path d="M10 50V24l20-14 20 14v26z"/><path d="M24 50V34h12v16"/></svg></div><b>Ремонт</b>своя бригада</div>
+  <div class="st"><div class="bubble">Ключи ваши!</div><div class="circ" style="background:var(--grn)"><svg viewBox="0 0 60 60" fill="none" stroke="#141414" stroke-width="3"><circle cx="20" cy="30" r="10"/><path d="M30 30h22M44 30v8M50 30v6"/></svg></div><b>Сдача</b>и гарантия 3 года</div>
+ </div>
+</div></section>
+
+<section id="works" style="padding-top:0"><div class="ws">
+ <h2 class="rv">До и после</h2>
+ <div class="ba rv" id="ba">
+  <div class="side before" style="background:url(img/before.webp) center/cover"><svg style="display:none" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice"><rect width="800" height="400" fill="#b9b5ab"/><rect y="300" width="800" height="100" fill="#8f8a7f"/><path d="M120 60h160v220H120z" fill="#d9d4c8" stroke="#6b665c" stroke-width="4"/><path d="M0 0 800 400M800 0 0 400" stroke="#a29d92" stroke-width="2"/><path d="M480 300v-90h40v90M560 300v-120h30v120" stroke="#6b665c" stroke-width="6"/><text x="560" y="120" font-family="JetBrains Mono" font-size="20" fill="#6b665c">голый бетон</text></svg><span class="lbl mono">ДО</span></div>
+  <div class="side after" id="after" style="background:url(img/after.webp) center/cover"><svg style="display:none" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice"><rect width="800" height="400" fill="#f3e9da"/><rect y="300" width="800" height="100" fill="#c79a6b"/><path d="M0 330h800M0 360h800" stroke="#b5885a" stroke-width="2"/><rect x="120" y="60" width="160" height="220" fill="#bfe3ff" stroke="#141414" stroke-width="4"/><path d="M200 60v220M120 170h160" stroke="#141414" stroke-width="4"/><rect x="430" y="210" width="260" height="70" rx="20" fill="#a5a6f6" stroke="#141414" stroke-width="4"/><rect x="450" y="180" width="80" height="40" rx="12" fill="#ff90e8" stroke="#141414" stroke-width="4"/><path d="M640 80v100M610 180h60l-10 30h-40z" fill="#ffc900" stroke="#141414" stroke-width="4"/><circle cx="330" cy="250" r="30" fill="#23a094" stroke="#141414" stroke-width="4"/><path d="M330 280v20" stroke="#141414" stroke-width="4"/></svg><span class="lbl mono">ПОСЛЕ</span></div>
+  <div class="handle" id="hd"></div>
+  <input type="range" min="0" max="100" value="50" oninput="after.style.clipPath='inset(0 0 0 '+this.value+'%)';hd.style.left=this.value+'%'">
+ </div>
+ <p class="mono rv" style="margin-top:22px;font-size:13px">ЖК «Летний» · 64 м² · капитальный ремонт · 58 дней</p>
+</div></section>
+
+<section id="rev" style="padding-top:0"><div class="ws">
+ <h2 class="rv">Отзывы</h2>
+ <div class="revs">
+  <div class="box rv2 rv"><p>Сдали на 4 дня раньше срока. Смета не изменилась ни на рубль, хотя мы сами добавили пару розеток.</p><div class="who"><div class="ava" style="background:var(--yel)">А</div><div><b>Анна и Сергей</b><div class="mono" style="font-size:11px">новостройка, 72 м²</div></div></div></div>
+  <div class="box rv2 rv"><p>Фотоотчёты каждый вечер, я жил в другом городе и ни разу не приехал на объект. Всё как на визуализации.</p><div class="who"><div class="ava" style="background:var(--pink)">Д</div><div><b>Дмитрий</b><div class="mono" style="font-size:11px">вторичка, 48 м²</div></div></div></div>
+  <div class="box rv2 rv"><p>Через год отошла плитка в ванной. Приехали через два дня и переложили бесплатно. Гарантия реально работает.</p><div class="who"><div class="ava" style="background:var(--vio)">М</div><div><b>Марина</b><div class="mono" style="font-size:11px">студия, 31 м²</div></div></div></div>
+ </div>
+</div></section>
+
+<div class="bigx" data-scrollx="-0.4">КВАДРАТ ✦ РЕМОНТ БЕЗ НЕРВОВ ✦ КВАДРАТ ✦ РЕМОНТ БЕЗ НЕРВОВ ✦</div>
+<section id="form" style="padding-top:20px"><div class="ws" style="position:relative">
+ <svg class="sticker" viewBox="0 0 100 100"><defs><path id="cp" d="M50 50m-36 0a36 36 0 1 1 72 0a36 36 0 1 1-72 0"/></defs><circle cx="50" cy="50" r="48" fill="#ffc900" stroke="#141414" stroke-width="2"/><text font-family="JetBrains Mono" font-size="10" font-weight="700"><textPath href="#cp">ЗАМЕР БЕСПЛАТНО ✦ ЗАМЕР БЕСПЛАТНО ✦ </textPath></text><text x="50" y="58" text-anchor="middle" font-family="Oswald" font-size="24" font-weight="700">0 ₽</text></svg>
+ <div class="final rv">
+  <div class="l"><h2>Вызвать замерщика</h2><p style="font-size:18px">Приедем в удобное время, замерим квартиру и через день пришлём смету. Бесплатно и ни к чему не обязывает.</p></div>
+  <div class="r">
+   <form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block'"><input required placeholder="Имя"><input required placeholder="Телефон"><select><option>Новостройка</option><option>Вторичка</option><option>Дом</option></select><button class="cta">Жду замерщика ↗</button></form>
+   <div class="ok">Спасибо! Позвоним в течение 15 минут ✦</div>
+  </div>
+ </div>
+</div></section>
+
+<footer class="mono">Демо-проект</footer>
+<script>
+function calc(){const a=+area.value;av.textContent=a;const t=+document.querySelector('#type .on').dataset.p,k=+document.querySelector('#home .on').dataset.k;let s=a*t*k;if(mat.checked)s*=.93;if(des.checked)s+=a*1500;pr.textContent=Math.round(s/1000)*1000+'';pr.textContent=(Math.round(s/1000)*1000).toLocaleString('ru-RU')+' ₽';term.textContent='Срок: '+Math.max(20,Math.round(a*(t/16000)*1.1))+' дней'}
+document.querySelectorAll('.seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.onclick=()=>{g.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');calc()}));
+calc();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('on');t.querySelectorAll('[data-n]').forEach(b=>{const n=+b.dataset.n,st=performance.now();(function f(now){const k=Math.min(1,(now-st)/1400);b.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(st)});io.unobserve(t)}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.07+'s';io.observe(el)});
+</script>
+<script src="fx.js" defer></script>
+</body>
+</html>
