@@ -113,7 +113,7 @@
         o.style.opacity = (.45 + z * .5).toFixed(2);
         o.style.filter = z < .6 ? `blur(${(.6 - z) * 6}px)` : 'none';
         box.appendChild(o);
-        orbs.push({ o, z, x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .0004, vy: (Math.random() - .5) * .0003, ph: Math.random() * 6, r: Math.random() * 360, vr: (Math.random() - .5) * .15 });
+        orbs.push({ o, z, s, x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .0004, vy: (Math.random() - .5) * .0003, ph: Math.random() * 6, r: Math.random() * 360, vr: (Math.random() - .5) * .15 });
         continue;
       }
       const z = .35 + Math.random() * .9;              // глубина: дальние меньше, мутнее, медленнее
@@ -124,8 +124,9 @@
       o.style.opacity = (.55 + z * .45).toFixed(2);
       o.style.boxShadow = `0 ${s * .25}px ${s * .35}px rgba(0,0,0,${.18 * z})`;
       box.appendChild(o);
-      orbs.push({ o, z, x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .0004, vy: (Math.random() - .5) * .0003, ph: Math.random() * 6 });
+      orbs.push({ o, z, s, x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .0004, vy: (Math.random() - .5) * .0003, ph: Math.random() * 6 });
     }
+    const inside = 'orbsIn' in host.dataset;  // data-orbs-in: фигуры целиком внутри блока, не обрезаются краем
     let mx = 0, my = 0;
     addEventListener('mousemove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5 }, { passive: true });
     (function tick(t) {
@@ -136,7 +137,15 @@
         if (b.y < -.1 || b.y > 1.05) b.vy *= -1;
         const bob = Math.sin(t / 1400 + b.ph) * 14 * b.z;
         if (b.vr !== undefined) b.r += b.vr;
-        b.o.style.transform = `translate3d(${b.x * W - mx * 60 * b.z}px,${b.y * H + bob - my * 40 * b.z}px,0)` + (b.vr !== undefined ? ` rotate(${b.r}deg)` : '');
+        let X = b.x * W - mx * 60 * b.z, Y = b.y * H + bob - my * 40 * b.z;
+        if (inside) {  // x,y — доля свободного места; отскок от стенок с запасом на мышь, качание и поворот
+          const d = b.s * .21, pad = 60 * b.z + 14 + d;
+          if (b.x < 0 || b.x > 1) { b.vx *= -1; b.x = Math.min(1, Math.max(0, b.x)) }
+          if (b.y < 0 || b.y > 1) { b.vy *= -1; b.y = Math.min(1, Math.max(0, b.y)) }
+          X = pad + b.x * Math.max(0, W - b.s - 2 * pad) - mx * 60 * b.z;
+          Y = pad - 14 * b.z + b.y * Math.max(0, H - b.s - 2 * pad) + bob - my * 40 * b.z + 14 * b.z;
+        }
+        b.o.style.transform = `translate3d(${X}px,${Y}px,0)` + (b.vr !== undefined ? ` rotate(${b.r}deg)` : '');
       });
       requestAnimationFrame(tick);
     })(0);
