@@ -21,7 +21,7 @@
   .fxshape:after{display:none}.fxshape svg{width:100%;height:100%;display:block}
   .fxorb:after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.18;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
   [data-clip]{clip-path:inset(var(--fxc,18%) round 28px);will-change:clip-path}
-  [data-lines] .fxl{display:block;overflow:hidden}
+  [data-lines] .fxl{display:block;overflow:hidden;padding:0 .2em .12em;margin:0 -.2em -.12em}  /* запас: рукописные буквы не обрезаются */
   [data-lines] .fxl>span{display:block;transform:translateY(105%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
   [data-lines].fxon .fxl>span{transform:none}
   [data-scrollx]{white-space:nowrap;will-change:transform;transition:transform .9s cubic-bezier(.2,.7,.2,1)}

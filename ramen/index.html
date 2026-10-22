@@ -20,13 +20,13 @@ nav a:after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:0;b
 nav a:hover:after{width:100%}
 .brand{font-family:'Noto Serif JP';font-size:36px;letter-spacing:.05em}
 .hero{text-align:center;padding:70px 0 80px;position:relative}.hero>*:not(.fxorbs){position:relative;z-index:1}
-.mon{width:170px;margin:0 auto;animation:turn 30s linear infinite}
+.mon{width:170px;margin:0 auto;will-change:transform}
 @keyframes turn{to{transform:rotate(360deg)}}
 .meta{display:flex;justify-content:center;gap:60px;margin:26px 0;color:var(--red);font-family:Oswald;font-size:13px;letter-spacing:.15em}
 .meta b{display:block;font-size:17px}
 h1{color:var(--red);font-family:Oswald;font-weight:700;font-size:clamp(34px,5.4vw,66px);line-height:1.05;text-transform:uppercase;max-width:920px;margin:0 auto}
 .lead{max-width:600px;margin:24px auto 0;font-size:20px;color:#ffd9d2}
-.jp{font-family:'Noto Serif JP';color:#fff;font-size:120px;opacity:.12;position:absolute;left:50%;top:40%;transform:translateX(-50%);white-space:nowrap;pointer-events:none}
+.jp{font-family:'Noto Serif JP';color:#fbeee6;font-size:120px;opacity:.9;position:absolute;left:50%;top:40%;transform:translateX(-50%);white-space:nowrap;pointer-events:none}
 .btn{display:inline-block;margin-top:30px;background:var(--red);color:#c8102e;font-family:Oswald;letter-spacing:.15em;padding:14px 34px;text-decoration:none;transition:.25s;border:1px solid var(--red)}
 .btn:hover{background:transparent;color:var(--red)}
 .steam{position:relative;height:60px;width:120px;margin:0 auto -10px}
@@ -126,5 +126,16 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*.07+'s';io.observe(el)});
 </script>
 <script src="fx.js" defer></script>
+<script>
+// вертушка: сама крутится; курсор рядом — поворачивается вслед за ним, ушёл — снова крутится
+(()=>{const m=document.querySelector('.mon');if(!m)return;let a=0,mx=-1e4,my=-1e4,last=performance.now();
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+document.addEventListener('mouseleave',()=>{mx=my=-1e4});
+(function f(now){const dt=Math.min(.05,(now-last)/1000);last=now;const r=m.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+ const dx=mx-cx,dy=my-cy,d=Math.hypot(dx,dy),w=Math.max(0,Math.min(1,1-(d-r.width*.6)/220));
+ a+=12*dt*(1-w);                                   // обычный ход: 360° за 30 с
+ if(w>0){const t=Math.atan2(dy,dx)*180/Math.PI+90;let diff=((t-a)%360+540)%360-180;a+=diff*Math.min(1,dt*8)*w}
+ m.style.transform=`rotate(${a}deg)`;requestAnimationFrame(f)})(last)})();
+</script>
 </body>
 </html>
