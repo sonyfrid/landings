@@ -85,6 +85,8 @@ details p{margin-top:10px;max-width:760px;color:#333}
 .form h2{color:var(--paper)}
 .form input{width:100%;background:transparent;border:0;border-bottom:2px solid #666;color:var(--paper);font:inherit;font-size:19px;padding:12px 0;margin-bottom:16px;outline:none}
 .form input:focus{border-color:var(--yel)}
+.form select{width:100%;background:var(--ink);border:0;border-bottom:2px solid #666;color:var(--paper);font:inherit;font-size:19px;padding:12px 0;margin-bottom:16px;outline:none;border-radius:0}
+.form select:focus{border-color:var(--yel)}
 .form button{background:var(--yel);color:var(--ink);border:0;border-radius:99px;font-family:Oswald;font-size:22px;padding:14px 30px;cursor:pointer;transition:.2s}
 .form button:hover{transform:scale(1.04)}
 .ok{display:none;font-family:Caveat;font-size:34px;color:var(--yel)}
@@ -163,9 +165,9 @@ footer{padding:40px 0;text-align:center;font-size:14px;color:#555}
 <section id="price">
  <h2 class="rv"><small>выбери формат</small>Тарифы</h2>
  <div class="grid3">
-  <div class="card price rv"><h3>Сам</h3><div class="p">9 900 ₽</div><ul><li>все уроки</li><li>задания</li><li>общий чат</li></ul><a class="btn" href="#form">Выбрать</a></div>
-  <div class="card price hot rv"><span class="tag">чаще берут</span><h3>С автором</h3><div class="p">19 900 ₽</div><ul><li>всё из «Сам»</li><li>разбор каждой работы</li><li>2 созвона</li><li>модуль про заказы</li></ul><a class="btn" href="#form">Выбрать</a></div>
-  <div class="card price rv"><h3>Наставник</h3><div class="p">39 900 ₽</div><ul><li>всё из «С автором»</li><li>личный план</li><li>ревью портфолио</li><li>помощь с первым заказом</li></ul><a class="btn" href="#form">Выбрать</a></div>
+  <div class="card price rv"><h3>Сам</h3><div class="p">9 900 ₽</div><ul><li>все уроки</li><li>задания</li><li>общий чат</li></ul><a class="btn pick" href="#form">Выбрать</a></div>
+  <div class="card price hot rv"><span class="tag">чаще берут</span><h3>С автором</h3><div class="p">19 900 ₽</div><ul><li>всё из «Сам»</li><li>разбор каждой работы</li><li>2 созвона</li><li>модуль про заказы</li></ul><a class="btn pick" href="#form">Выбрать</a></div>
+  <div class="card price rv"><h3>Наставник</h3><div class="p">39 900 ₽</div><ul><li>всё из «С автором»</li><li>личный план</li><li>ревью портфолио</li><li>помощь с первым заказом</li></ul><a class="btn pick" href="#form">Выбрать</a></div>
  </div>
 </section>
 
@@ -189,8 +191,14 @@ footer{padding:40px 0;text-align:center;font-size:14px;color:#555}
 <section id="form">
  <div class="form rv">
   <div><h2><small style="color:#ffd400">поток 15 ноября</small>Записаться на курс</h2><p>Оставь контакты, пришлём программу и ответим на вопросы.</p></div>
-  <form onsubmit="event.preventDefault();this.style.display='none';this.nextElementSibling.style.display='block'">
-   <input required placeholder="Имя"><input required placeholder="Телефон или Telegram"><button>Отправить ↘</button>
+  <form id="lead">
+   <input name="name" required placeholder="Имя" autocomplete="name">
+   <input name="phone" required placeholder="Телефон" type="tel" autocomplete="tel">
+   <input name="telegram" placeholder="Telegram, например @nick">
+   <select name="tariff"><option value="">Тариф: пока не знаю</option><option>Сам</option><option selected>С автором</option><option>Наставник</option></select>
+   <select name="level"><option value="">Уровень: не знаю</option><option>С нуля</option><option>Рисую для себя</option><option>Уже есть заказы</option></select>
+   <input name="goal" placeholder="Зачем тебе курс? (необязательно)">
+   <button>Отправить ↘</button>
   </form>
   <div class="ok">Спасибо! Мы скоро напишем ✳</div>
  </div>
@@ -213,6 +221,26 @@ function look(){raf=0;cats.forEach(s=>{const r=s.getBoundingClientRect();if(r.bo
 addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;if(!raf)raf=requestAnimationFrame(look)});
 addEventListener('scroll',()=>{if(mx>=0&&!raf)raf=requestAnimationFrame(look)},{passive:true});
 document.querySelectorAll('.cat').forEach(c=>c.addEventListener('click',()=>{c.classList.remove('boop');void c.offsetWidth;c.classList.add('boop')}));
+})();
+</script>
+<script>
+// Заявки: на локальном показе (localhost или ?lead=local) уходят в n8n → amoCRM → Telegram.
+// На публичной странице только «спасибо», чтобы не стучаться в чужой localhost.
+(() => {
+  const form = document.getElementById('lead');
+  document.querySelectorAll('.pick').forEach(a => a.addEventListener('click', () => {
+    form.tariff.value = a.closest('.price').querySelector('h3').textContent;
+  }));
+  const local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || new URLSearchParams(location.search).get('lead') === 'local';
+  const endpoint = 'http://localhost:5678/webhook/kurs-lead';
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    const q = new URLSearchParams(location.search);
+    data.utm_source = q.get('utm_source') || ''; data.utm_campaign = q.get('utm_campaign') || '';
+    if (local) { try { await fetch(endpoint, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)}); } catch (err) {} }
+    form.style.display = 'none'; form.nextElementSibling.style.display = 'block';
+  });
 })();
 </script>
 </body>
