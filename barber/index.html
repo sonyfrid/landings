@@ -24,11 +24,11 @@ header.sc{}
 .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--gold);color:var(--gold);padding:15px 28px;font-size:16px;letter-spacing:.06em;transition:.35s;background:none;cursor:pointer;font-family:Inter}
 .btn:hover,.btn.f{background:var(--gold);color:var(--bg)}
 .btn.f:hover{background:transparent;color:var(--gold)}
-.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
 .hero .bgi{position:absolute;inset:0;background:url(img/b4.webp) center/cover;transform:scale(1.15);animation:kb 18s ease-out forwards}
 @keyframes kb{to{transform:scale(1)}}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,9,.78),rgba(10,10,9,.62) 40%,rgba(10,10,9,.97)),radial-gradient(70% 60% at 25% 70%,rgba(0,0,0,.55),transparent)}
-.hc{position:relative;z-index:2;padding-bottom:90px;width:100%}
+.hc{position:relative;z-index:2;padding:150px 0 90px;width:100%}
 .ey{color:var(--gold);letter-spacing:.3em;font-size:14px;display:flex;align-items:center;gap:14px}
 .ey:before{content:"";height:1px;background:var(--gold);width:0;animation:ln 1.4s .6s forwards}
 @keyframes ln{to{width:70px}}
@@ -39,7 +39,8 @@ h1 .w{display:inline-block;opacity:0;transform:translateY(40px);animation:up .9s
 .hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
 .hrow p{max-width:460px;color:#cfc8bb;font-size:19px}
 .stats{display:flex;gap:46px}
-.stats b{font-family:'Cormorant Garamond';font-size:52px;font-weight:500;color:var(--gold);display:block;line-height:1}
+.stats b{font-family:'Cormorant Garamond';font-size:52px;font-weight:500;color:var(--gold);display:block;line-height:1;font-variant-numeric:lining-nums tabular-nums;min-width:1.2em}
+.stats>div{display:flex;flex-direction:column;justify-content:flex-end}
 .stats span{font-size:14px;color:var(--mut)}
 .mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0}
 .mq div{display:inline-block;animation:mq 40s linear infinite;font-family:'Cormorant Garamond';font-style:italic;font-size:40px}
