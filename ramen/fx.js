@@ -117,7 +117,7 @@
         continue;
       }
       const z = .35 + Math.random() * .9;              // глубина: дальние меньше, мутнее, медленнее
-      const s = (60 + Math.random() * 160) * z;
+      const s = (60 + Math.random() * 160) * z * +(host.dataset.orbsSize || 1);  // data-orbs-size — множитель размера
       o.style.width = o.style.height = s + 'px';
       o.style.background = shade(cols[i % cols.length].trim());
       o.style.filter = z < .6 ? `blur(${(.6 - z) * 10}px)` : 'none';
